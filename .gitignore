@@ -1,0 +1,14 @@
+# Dependencias y build
+node_modules
+dist
+
+# Variables de entorno: contienen las claves de la API y NO se suben a GitHub
+.env
+.env.local
+.env.*.local
+
+# Logs y editor
+*.log
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
