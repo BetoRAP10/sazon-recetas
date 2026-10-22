@@ -16,7 +16,7 @@ export function home() {
       h('div', { class: 'daily__body' },
         h('span', { class: 'eyebrow' }, 'Receta del día'),
         h('h2', {}, meal.strMeal),
-        h('p', { class: 'muted' }, `${categoryName(meal.strCategory)} · Cocina ${meal.strArea}`),
+        h('p', { class: 'muted' }, [meal.strCategory && categoryName(meal.strCategory), meal.strArea && `Cocina ${meal.strArea}`].filter(Boolean).join(' · ')),
         h('p', { class: 'daily__text' }, `${meal.strInstructions.slice(0, 220).trim()}…`),
         h('a', { class: 'btn', href: `#/receta/${encodeURIComponent(meal.idMeal)}` }, 'Ver receta completa')));
   }).catch((err) => daily.replaceChildren(errorState(err)));

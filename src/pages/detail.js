@@ -25,8 +25,8 @@ export function detail(id) {
         h('div', { class: 'recipe__info' },
           h('h1', {}, meal.strMeal),
           h('div', { class: 'tags' },
-            h('span', { class: 'tag' }, categoryName(meal.strCategory)),
-            h('span', { class: 'tag' }, `Cocina ${meal.strArea}`),
+            meal.strCategory && h('span', { class: 'tag' }, categoryName(meal.strCategory)),
+            meal.strArea && h('span', { class: 'tag' }, `Cocina ${meal.strArea}`),
             ...(meal.strTags ?? '').split(',').filter(Boolean).slice(0, 3).map((t) => h('span', { class: 'tag tag--soft' }, t.trim()))),
           h('h2', {}, 'Ingredientes'),
           h('ul', { class: 'ingredients' }, ingredientsOf(meal).map((i) =>
